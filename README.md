@@ -2,12 +2,12 @@
 
 #初始化
 ---
-    var wxp = require('wx-promise');
+    var wxp = require('wechat-promise');
     var wx = new wxp.Wx(app_id, app_secret, encrypt_key);
 ---
 
 ##自定义并加入缓存
-**微信的access_token, js_ticket在正式生产环境中需要缓存起来，所以wx-promise已内置自动缓存的调用，只需要自定义cache既可**
+**微信的access_token, js_ticket在正式生产环境中需要缓存起来，所以wechat-promise已内置自动缓存的调用，只需要自定义cache既可**
 
 **cache的定义方法如下，以memcached为例**
 
