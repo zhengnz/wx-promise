@@ -420,7 +420,7 @@ class Wx
       encoding: null
       resolveWithFullResponse: true
       agentOptions:
-        pfx: fs.readFileSync("#{__dirname}/wxpay/apiclient_cert.p12")
+        pfx: fs.readFileSync(@cert_path)
         passphrase: @mch_id
     }
     .then (response) =>

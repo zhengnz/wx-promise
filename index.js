@@ -551,7 +551,7 @@
         encoding: null,
         resolveWithFullResponse: true,
         agentOptions: {
-          pfx: fs.readFileSync(__dirname + "/wxpay/apiclient_cert.p12"),
+          pfx: fs.readFileSync(this.cert_path),
           passphrase: this.mch_id
         }
       }).then((function(_this) {
