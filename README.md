@@ -5,8 +5,10 @@
 ---
 
 ##自定义并加入缓存
-###微信的access_token, js_ticket在正式生产环境中需要缓存起来，所以wx-promise已内置自动缓存的调用，只需要自定义cache既可
-###cache的定义方法如下，以memcached为例
+**微信的access_token, js_ticket在正式生产环境中需要缓存起来，所以wx-promise已内置自动缓存的调用，只需要自定义cache既可**
+
+**cache的定义方法如下，以memcached为例**
+
 ---
     var memcached = new Memcahced(...),
         Promise = require('bluebird');
@@ -36,6 +38,7 @@
 
 ##启用支付功能
 **添加商户id和证书地址**
+
 **商户id和证书均可在微信商户平台获取**
 
 ---
