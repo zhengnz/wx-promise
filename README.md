@@ -46,3 +46,5 @@
 ---
     var wx = new wxp.Wx(app_id, app_secret, encrypt_key, cache, mch_id, cert_path);
 ---
+
+***待补充...***
