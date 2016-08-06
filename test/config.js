@@ -3,10 +3,10 @@
   var conf;
 
   conf = {
-    id: 'wx481c10d59e2815b9',
-    secret: 'f4da79269d88c47b2040387e44882eda',
-    encrpyt_key: 'GVOBHZZ1A3RRULTV71QF8ZNEQLU8153O',
-    mch_id: '1340517601',
+    id: null,
+    secret: null,
+    encrpyt_key: null,
+    mch_id: null,
     download: null,
     test_temp: []
   };
