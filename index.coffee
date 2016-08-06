@@ -29,7 +29,7 @@ class Cache
     Promise.resolve value
 
 class Wx
-  constructor: (@id, @secret, @encrypt_key, @cache=new Cache(), @mch_id=null, @cert_path=null) ->
+  constructor: (@id, @secret, @encrypt_key=null, @cache=new Cache(), @mch_id=null, @cert_path=null) ->
     # mch_id 商户id，支付必须
     # encrypt_key 加密字符串，必须使用32位，该字符串需与微信后台Token一致
 

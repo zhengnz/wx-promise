@@ -1,6 +1,6 @@
 {
   "name": "wechat-promise",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "微信接口，promise方式调用",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,7 @@
     "fs": "^0.0.2",
     "lodash": "^4.14.1",
     "moment": "^2.14.1",
+    "request": "^2.74.0",
     "request-promise": "^4.1.0",
     "utility": "^1.8.0",
     "xml": "^1.0.1",

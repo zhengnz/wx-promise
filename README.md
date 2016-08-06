@@ -47,4 +47,98 @@
     var wx = new wxp.Wx(app_id, app_secret, encrypt_key, cache, mch_id, cert_path);
 ---
 
-***待补充...***
+#接口操作
+##请边参考微信接口的文档边对照使用
+
+###获取登录授权码链接
+**auth_url**
+
+**微信浏览器跳转到该链接后会跳转回redirect_url，并在链接上加上授权码code，通过code可进行登录操作**
+
+---
+    wx.auth_url(redirect_url, state, scope).then(function(data){
+      console.log(data)
+    });
+---
+
+###登录
+**login**
+
+**登录微信账号**
+
+---
+    wx.login(code).then(function(data){
+      console.log(data.access_token);
+      console.log(data.openid);
+    });
+---
+
+###获取用户信息
+**user_info**
+
+**登录后获取用户信息，昵称头像等**
+
+---
+    wx.user_info(token, openid).then(function(data){
+      console.log(data)
+    });
+---
+
+###获取access_token
+**access_token**
+
+**用于其他接口调用的token，此token不同于登陆的access_token，请勿混淆**
+
+**该token支持缓存，实际应用中也必须缓存，程序中已内置，但缓存方法需要自定义，请参考‘自定义并加入缓存’**
+
+---
+    wx.access_token().then(function(token){
+      console.log(token);
+    });
+---
+
+###自定义菜单
+**create_menu**
+
+**用于自定义进入公众号时底部菜单，使用该功能必须开启服务器配置**
+
+**该方法的json参数请参照微信文档**
+
+---
+    wx.create_menu(json).then(function(data){
+      console.log(data);
+    });
+---
+
+###获取js接口签名
+**js_signature**
+
+**用于调用微信jssdk**
+
+---
+    console.log(wx.js_signature(url));
+---
+
+###模板接口
+**temp_info**
+
+**推送给指定用户信息**
+
+---
+    wx.temp_info(openid, tid, data, url).then(function(data){
+      console.log(data);
+    });
+---
+
+###下载媒体资源
+**download**
+
+**下载媒体资源，请注意媒体资源过期时间**
+
+---
+    wx.download(media_id).then(function(data){
+      console.log(data);
+    });
+---
+
+***待补充支付部分***

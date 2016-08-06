@@ -69,7 +69,7 @@
     function Wx(id, secret, encrypt_key, cache, mch_id, cert_path) {
       this.id = id;
       this.secret = secret;
-      this.encrypt_key = encrypt_key;
+      this.encrypt_key = encrypt_key != null ? encrypt_key : null;
       this.cache = cache != null ? cache : new Cache();
       this.mch_id = mch_id != null ? mch_id : null;
       this.cert_path = cert_path != null ? cert_path : null;
