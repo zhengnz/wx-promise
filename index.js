@@ -6,7 +6,7 @@
 
   module.exports = {
     Wx: require('./wx'),
-    wxQy: require('./wxqy'),
+    WxQy: require('./wxqy'),
     WxHttpError: errorHandler.WxHttpError,
     WxError: errorHandler.WxError
   };

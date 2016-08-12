@@ -44,6 +44,7 @@ class WxQy
     uri = 'https://qyapi.weixin.qq.com/cgi-bin/service/get_login_info'
     @access_token()
     .then (token) ->
+      console.log token
       rp {
         uri: uri
         method: 'POST'

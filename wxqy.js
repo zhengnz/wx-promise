@@ -70,6 +70,7 @@
       var uri;
       uri = 'https://qyapi.weixin.qq.com/cgi-bin/service/get_login_info';
       return this.access_token().then(function(token) {
+        console.log(token);
         return rp({
           uri: uri,
           method: 'POST',
