@@ -25,7 +25,7 @@
       };
     
       Cache.prototype.set = function(key, value, expire) {
-        return this.cache.setAsync(key, val, time).then(function() {
+        return this.cache.setAsync(key, val, expire).then(function() {
           return Promise.resolve(val);
         });
       };

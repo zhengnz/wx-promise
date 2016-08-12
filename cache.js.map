@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "cache.js",
+  "sourceRoot": "",
+  "sources": [
+    "cache.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA;;EAAA,OAAA,GAAU,OAAA,CAAQ,UAAR;;EAEJ;;;oBACJ,GAAA,GAAK,SAAC,GAAD;aACH,OAAO,CAAC,OAAR,CAAgB,IAAhB;IADG;;oBAGL,GAAA,GAAK,SAAC,GAAD,EAAM,KAAN,EAAa,MAAb;aACH,OAAO,CAAC,OAAR,CAAgB,KAAhB;IADG;;;;;;EAGP,MAAM,CAAC,OAAP,GAAiB;AATjB"
+}
