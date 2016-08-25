@@ -14,7 +14,7 @@ WxHttpError = errorHandler.WxHttpError
 WxError = errorHandler.WxError
 
 class WxQy
-  constructor: (@corp_id, @secret, @cache=new Cache()) ->
+  constructor: (@corp_id, @secret, @provider_secret, @cache=new Cache()) ->
 
   #获取跳转的微信登陆地址
   auth_url: (redirect_uri, state) ->
@@ -40,11 +40,31 @@ class WxQy
         else
           @cache.set 'access_token', req.access_token, req.expires_in - 60
 
-  user_info: (code) ->
+  provider_access_token: ->
+    @cache.get 'provider_access_token'
+    .then (token) =>
+      if token?
+        return Promise.resolve token
+      uri = "https://qyapi.weixin.qq.com/cgi-bin/service/get_provider_token"
+      rp {
+        uri: uri
+        method: 'POST'
+        body:
+          corpid: @corp_id
+          provider_secret: @provider_secret
+        json: true
+      }
+      .then (req) =>
+        if _.has req, 'errcode'
+          Promise.reject new WxError req.errmsg
+        else
+          @cache.set 'provider_access_token', req.provider_access_token, req.expires_in - 60
+
+  user_info: (code, is_provider=false) ->
     uri = 'https://qyapi.weixin.qq.com/cgi-bin/service/get_login_info'
-    @access_token()
+
+    Promise.resolve if is_provider is off then @access_token() else @provider_access_token()
     .then (token) ->
-      console.log token
       rp {
         uri: uri
         method: 'POST'

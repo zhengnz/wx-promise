@@ -29,9 +29,10 @@
   WxError = errorHandler.WxError;
 
   WxQy = (function() {
-    function WxQy(corp_id, secret, cache) {
+    function WxQy(corp_id, secret, provider_secret, cache) {
       this.corp_id = corp_id;
       this.secret = secret;
+      this.provider_secret = provider_secret;
       this.cache = cache != null ? cache : new Cache();
     }
 
@@ -66,11 +67,40 @@
       })(this));
     };
 
-    WxQy.prototype.user_info = function(code) {
+    WxQy.prototype.provider_access_token = function() {
+      return this.cache.get('provider_access_token').then((function(_this) {
+        return function(token) {
+          var uri;
+          if (token != null) {
+            return Promise.resolve(token);
+          }
+          uri = "https://qyapi.weixin.qq.com/cgi-bin/service/get_provider_token";
+          return rp({
+            uri: uri,
+            method: 'POST',
+            body: {
+              corpid: _this.corp_id,
+              provider_secret: _this.provider_secret
+            },
+            json: true
+          }).then(function(req) {
+            if (_.has(req, 'errcode')) {
+              return Promise.reject(new WxError(req.errmsg));
+            } else {
+              return _this.cache.set('provider_access_token', req.provider_access_token, req.expires_in - 60);
+            }
+          });
+        };
+      })(this));
+    };
+
+    WxQy.prototype.user_info = function(code, is_provider) {
       var uri;
+      if (is_provider == null) {
+        is_provider = false;
+      }
       uri = 'https://qyapi.weixin.qq.com/cgi-bin/service/get_login_info';
-      return this.access_token().then(function(token) {
-        console.log(token);
+      return Promise.resolve(is_provider === false ? this.access_token() : this.provider_access_token()).then(function(token) {
         return rp({
           uri: uri,
           method: 'POST',
