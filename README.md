@@ -114,7 +114,9 @@
 **用于调用微信jssdk**
 
 ---
-    console.log(wx.js_signature(url));
+    wx.js_signature(url).then(function(data){
+        console.log(data);
+    });
 ---
 
 ###模板接口
