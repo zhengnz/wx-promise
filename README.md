@@ -56,9 +56,7 @@
 **微信浏览器跳转到该链接后会跳转回redirect_url，并在链接上加上授权码code，通过code可进行登录操作**
 
 ---
-    wx.auth_url(redirect_url, state, scope).then(function(data){
-      console.log(data)
-    });
+    var url = wx.auth_url(redirect_url, state, scope);
 ---
 
 ###登录
