@@ -147,7 +147,7 @@ class Wx
         _.range(0, 10).join('')
       ]
       noncestr = utils.randomString 16, s.join('')
-      timestamp = _.now()
+      timestamp = moment().format('X')
       s = "jsapi_ticket=#{ticket}&noncestr=#{noncestr}&timestamp=#{timestamp}&url=#{url}"
       signature = utils.sha1 s
       {
